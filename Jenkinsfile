@@ -14,7 +14,7 @@ pipeline {
       stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t harshakaratam/devops-integration .'
+                    sh 'docker build -t harshakaratam/numeric-0.0.1 .'
                 }
             }
         }
