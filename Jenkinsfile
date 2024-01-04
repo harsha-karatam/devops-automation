@@ -18,6 +18,15 @@ pipeline {
                 }
             }
         }
-
+        stage('Push image to Hub'){
+            steps{
+                script{
+                  withCredentials([string(credentialsId: 'harshakaratam', variable: 'dockerhubpwd')]) {
+                  sh 'docker login -u harshakaratam -p ${dockerhubpwd}'
+                  }                 
+                      sh 'docker push harshakaratam/numeric-0.0.1'
+                }
+            }
+        }
     }
 }
