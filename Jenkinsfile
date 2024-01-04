@@ -3,7 +3,7 @@ pipeline {
     tools{
         maven 'Maven_3_9_6'
     }
-}
+
     stages{
         stage('Build Maven'){
             steps{
@@ -12,7 +12,7 @@ pipeline {
             }
         }
     }
-
+}
              
         stage('Build docker image'){
             steps{
