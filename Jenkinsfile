@@ -12,8 +12,8 @@ pipeline {
             }
         }
     }
-}
-             
+
+           
         stage('Build docker image'){
             steps{
                 script{
@@ -21,24 +21,4 @@ pipeline {
                 }
             }
         }
-        stage('Push image to Hub'){
-            steps{
-                script{
-                   withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u harshakaratam -p ${Harsha11@123}'
-
 }
-                   sh 'docker push harshakaratam/devops-integration'
-                }
-            }
-        }
-        stage('Deploy to k8s'){
-            steps{
-                script{
-                    kubernetesDeploy (configs: 'deploymentservice.yaml',kubeconfigId: 'k8sconfigpwd')
-                }
-            }
-        }
-    
-
-    
