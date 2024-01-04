@@ -3,6 +3,7 @@ pipeline {
     tools{
         maven 'Maven_3_9_6'
     }
+}
     stages{
         stage('Build Maven'){
             steps{
@@ -10,6 +11,7 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+    }
              stage ('SonarQube Analyses') {
         steps {
             withSonarQubeEnv('sonar6') {
@@ -47,5 +49,4 @@ pipeline {
         }
     }
 }
-    }
-}
+    
