@@ -3,7 +3,7 @@ pipeline {
     tools{
         maven 'Maven_3_9_6'
     }
-
+}
     stages{
         stage('Build Maven'){
             steps{
@@ -12,23 +12,12 @@ pipeline {
             }
         }
     }
-}
-             stage ('SonarQube Analyses') {
-        steps {
-            withSonarQubeEnv('sonar6') {
-              sh 'mvn sonar:sonar -Dsonar.host.url=http://10.0.1.74:9000 -Dsonar.token=sqa_1461c37082c8f48ea454c7af20f5e2808685f773'
-            }
-            timeout(time: 2, unit: 'MINUTES') {    
-                script {
-                  waitForQualityGate abortPipeline: true
-                }
-          }
-     }
-             }
+
+             
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t javatechie/devops-integration .'
+                    sh 'docker build -t harshakaratam/devops-integration .'
                 }
             }
         }
