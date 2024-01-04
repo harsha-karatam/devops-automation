@@ -11,10 +11,7 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
-    }
-}
-           
-        stage('Build docker image'){
+      stage('Build docker image'){
             steps{
                 script{
                     sh 'docker build -t harshakaratam/devops-integration .'
@@ -22,3 +19,5 @@ pipeline {
             }
         }
 
+    }
+}
